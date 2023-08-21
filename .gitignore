@@ -1,0 +1,10 @@
+.env
+conf.py
+service_account.json
+sqlite.db
+/env/
+/venv/
+__pycache__
+.vscode
+bot/test.py
+service/add_test_data.py
