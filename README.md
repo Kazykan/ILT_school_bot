@@ -1,4 +1,4 @@
-# telegram bot Motivation for kids
+# telegram bot языковой студии ILT_school_bot
 
 [![python](https://img.shields.io/badge/python-3.11-green)](https://img.shields.io/badge/python-3.11-green) [![aiogram](https://img.shields.io/badge/aiogram-3.0.0b7-green)](https://img.shields.io/badge/aiogram-3.0.0b7-green) [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-green)](https://img.shields.io/badge/SQLAlchemy-2.0-green)
 
