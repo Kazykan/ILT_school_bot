@@ -6,7 +6,7 @@ from aiogram.types import BotCommand
 from aiogram.fsm.storage.memory import MemoryStorage
 
 
-from bot.handlers import cb_start_test, common, add_contact
+from bot.handlers import cb_start_test, common, add_contact, cb_appointment
 
 # from bot.handlers.apshed import create_activity_days_for_next_week, send_message_cron_middleware
 # from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -44,7 +44,7 @@ async def main(bot):
 
     dp.include_router(common.router)
     dp.include_router(add_contact.router)
-    # dp.include_router(cb_child_activity.router)
+    dp.include_router(cb_appointment.router)
     # dp.include_router(cb_child.router)
     dp.include_router(cb_start_test.router)
     # dp.include_router(cb_add_child.router)

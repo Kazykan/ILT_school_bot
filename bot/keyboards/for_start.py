@@ -9,6 +9,6 @@ def ikb_start() -> types.InlineKeyboardButton:
     builder = InlineKeyboardBuilder()
     builder.button(
             text=f'Начать тестирование',
-            callback_data=QuestionsCFactory(num=0, answer='not')) 
+            callback_data=QuestionsCFactory(num=0, answer='not', answer_text='not')) 
     builder.adjust(1)
     return builder.as_markup()

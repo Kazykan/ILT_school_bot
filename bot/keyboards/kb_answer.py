@@ -13,8 +13,11 @@ def get_keyboard_with_answers(number_question: int):
     question = Question(**list_question[number_question])
     for i in question.answer_list:
         builder.button(
-            text=f'{i.answer}',
-            callback_data=QuestionsCFactory(num=(number_question + 1), answer=f'{i.correct}')
+            text=f'{i.answer}',  # TODO: Убрать {i.correct}
+            callback_data=QuestionsCFactory(
+                num=(number_question + 1),
+                answer=f'{i.correct}',
+                answer_text=f'{i.answer}')
             ) 
     builder.adjust(1)
     return builder.as_markup()

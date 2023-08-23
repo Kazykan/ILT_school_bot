@@ -20,9 +20,27 @@ class Client(Base):
     __tablename__ = 'client'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    bot_user_id: Mapped[int] = mapped_column(Integer, nullable=True)
     name: Mapped[str] = mapped_column(String(30))
     phone: Mapped[str] = mapped_column(String(12))  # TODO: Сделать уникальным поле
+    bot_user_id: Mapped[int] = mapped_column(Integer, nullable=True)
+    nickname: Mapped[str] = mapped_column(String(50), nullable=True)
+    date: Mapped[str] = mapped_column(String(50), nullable=True)
+    answer_point: Mapped[int] = mapped_column(Integer, nullable=True)
+    answer_text: Mapped[str] = mapped_column(String(255), nullable=True)
+    appointment: Mapped[bool] = mapped_column(Boolean, nullable=True)
+
+
+    @property
+    def serialize(self):
+        return {
+            'name': self.name,
+            'phone': self.phone,
+            'bot_user_id': self.bot_user_id,
+            'nickname': self.nickname,
+            'answer_point': self.answer_point,
+            'answer_text': self.answer_text,
+            'appointment': self.appointment
+        }
 
 
 Base.metadata.create_all(engine)

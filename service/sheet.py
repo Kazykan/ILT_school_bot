@@ -17,9 +17,9 @@ def data_time() -> str:
 
 def adjustment_data(data: dict) -> list:
     transaction = []
+    transaction.append(data_time())
     for k, v in data.items():
         transaction.append(v)
-    transaction.append(data_time())
     return transaction
 
 def add_to_google_excel(data: dict) -> bool:

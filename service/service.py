@@ -1,5 +1,7 @@
 import re
 
+from bot.text import CORRECT_ANSWER_END, ELEMENTARY, ELEMENTARY_CORRECT_ANSWER, PRE_INTERMEDIATE, PRE_INTERMEDIATE_CORRECT_ANSWER, STARTER_CORRECT_ANSWER, STARTER, TEST_END_TEXT, WOW_CORRECT_ANSWER
+
 
 def valid_number(number: str):
     """Проверка номера на валидность"""
@@ -22,3 +24,18 @@ def valid_name(contact):
     if fullname == '':
         pass
     return fullname
+
+
+def test_results_text(answer_points: int) -> str:
+    text = ''
+    if answer_points <= 4:
+        text += f"{STARTER_CORRECT_ANSWER} {answer_points} {CORRECT_ANSWER_END}{STARTER}"
+    elif answer_points <= 7:
+        text += f"{ELEMENTARY_CORRECT_ANSWER} {answer_points} {CORRECT_ANSWER_END}{ELEMENTARY}"
+    elif answer_points <= 9:
+        text += f"{PRE_INTERMEDIATE_CORRECT_ANSWER} {answer_points} {CORRECT_ANSWER_END}{PRE_INTERMEDIATE}"
+    elif answer_points == 10:
+        text += f"{WOW_CORRECT_ANSWER} {answer_points} {CORRECT_ANSWER_END}"  
+    text += f"{TEST_END_TEXT}"
+    return text
+    
