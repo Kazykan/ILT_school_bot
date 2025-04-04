@@ -1,12 +1,31 @@
 """Добавление данных в google таблицу"""
 
-import gspread
-import datetime
+import gspread, os, datetime, json
+from dotenv import load_dotenv
+load_dotenv()
 
-from conf import FILE_EXCEL_GOOGLE, WORK_SHEET_EXCEL_GOOGLE
+
+FILE_EXCEL_GOOGLE=os.getenv('FILE_EXCEL_GOOGLE')
+WORK_SHEET_EXCEL_GOOGLE=os.getenv('WORK_SHEET_EXCEL_GOOGLE')
+google_credentials = os.getenv("GOOGLE_CREDENTIALS")
 
 
-sa = gspread.service_account(filename='service_account.json')
+if google_credentials:
+    credentials_dict = json.loads(google_credentials)
+
+    # Создаём временный JSON-файл
+    temp_json_path = "service_account.json"
+    with open(temp_json_path, "w") as temp_json:
+        json.dump(credentials_dict, temp_json)
+
+    # Используем его в gspread
+    sa = gspread.service_account(filename=temp_json_path)
+
+    # Можно удалить файл после загрузки (не обязательно)
+    os.remove(temp_json_path)
+else:
+    raise ValueError("GOOGLE_CREDENTIALS не найдены в переменных окружения")
+
 sh = sa.open(FILE_EXCEL_GOOGLE)
 wks = sh.worksheet(WORK_SHEET_EXCEL_GOOGLE)
 

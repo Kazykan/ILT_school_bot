@@ -1,9 +1,10 @@
-import asyncio
+import asyncio, os
 import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand
 from aiogram.fsm.storage.memory import MemoryStorage
+from dotenv import load_dotenv
 
 
 from bot.handlers import cb_start_test, common, add_contact, cb_appointment
@@ -11,7 +12,8 @@ from bot.handlers import cb_start_test, common, add_contact, cb_appointment
 # from bot.handlers.apshed import create_activity_days_for_next_week, send_message_cron_middleware
 # from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-from conf import TELEGRAM_TOKEN
+load_dotenv()
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 
 logger = logging.getLogger(__name__)
 
