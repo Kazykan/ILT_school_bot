@@ -1,15 +1,14 @@
-import datetime
-
-from typing import List
-from sqlalchemy import create_engine, Column, Integer, String, Date, Text,\
-    Boolean, Table, ForeignKey, SmallInteger
-from sqlalchemy.orm import sessionmaker, relationship, DeclarativeBase, Mapped,\
-    mapped_column
-# from config import DATABASE
-
+from sqlalchemy import create_engine, Integer, String, Boolean
+from sqlalchemy.orm import (
+    sessionmaker,
+    DeclarativeBase,
+    Mapped,
+    mapped_column,
+)
 
 DATABASE = "sqlite:///sqlite.db"
 engine = create_engine(DATABASE, echo=True)
+
 
 class Base(DeclarativeBase):
     pass
@@ -17,7 +16,8 @@ class Base(DeclarativeBase):
 
 class Client(Base):
     """Пользователь"""
-    __tablename__ = 'client'
+
+    __tablename__ = "client"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(30))
@@ -29,17 +29,16 @@ class Client(Base):
     answer_text: Mapped[str] = mapped_column(String(255), nullable=True)
     appointment: Mapped[bool] = mapped_column(Boolean, nullable=True)
 
-
     @property
     def serialize(self):
         return {
-            'name': self.name,
-            'phone': self.phone,
-            'bot_user_id': self.bot_user_id,
-            'nickname': self.nickname,
-            'answer_point': self.answer_point,
-            'answer_text': self.answer_text,
-            'appointment': self.appointment
+            "name": self.name,
+            "phone": self.phone,
+            "bot_user_id": self.bot_user_id,
+            "nickname": self.nickname,
+            "answer_point": self.answer_point,
+            "answer_text": self.answer_text,
+            "appointment": self.appointment,
         }
 
 

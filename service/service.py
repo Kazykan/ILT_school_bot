@@ -39,3 +39,15 @@ def test_results_text(answer_points: int) -> str:
     text += f"{TEST_END_TEXT}"
     return text
     
+def format_client_data(data: dict) -> str:
+    """Форматирует данные клиента для отправки админу"""
+    return (
+        f"👤 <b>Имя:</b> {data.get('name')}\n"
+        f"📞 <b>Телефон:</b> <code>{data.get('phone')}</code>\n"
+        f"🆔 <b>Bot User ID:</b> {data.get('bot_user_id')}\n"
+        f"🎮 <b>Никнейм:</b> {data.get('nickname') or '—'}\n"
+        f"📌 <b>Оценка:</b> {data.get('answer_point') or '—'} из 10\n"
+        f"📝 <b>Ответ:</b> {data.get('answer_text') or '—'}\n"
+        f"📅 <b>Запись на приём:</b> {'Да' if data.get('appointment') else 'Нет'}"
+    )
+
