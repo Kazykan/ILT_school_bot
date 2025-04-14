@@ -1,10 +1,21 @@
+# Секреты и конфигурации
 .env
 conf.py
 service_account.json
 sqlite.db
+
+# Виртуальные окружения
 /env/
 /venv/
-__pycache__
-.vscode
+
+# Кеш и временные файлы
+__pycache__/
+*.py[cod]
+*.pyo
+
+# IDE/редактор
+.vscode/
+
+# Временные или отладочные скрипты
 bot/test.py
 service/add_test_data.py
