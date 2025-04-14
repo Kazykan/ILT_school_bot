@@ -7,5 +7,6 @@ services:
     env_file:
       - .env
     volumes:
+      - ./sqlite.db:/app/sqlite.db
       - ./service_account.json:/run/secrets/credentials.json:ro
     restart: always
