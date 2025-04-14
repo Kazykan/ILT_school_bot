@@ -3,6 +3,7 @@ import sys
 
 from aiogram import Router, types, F
 from aiogram.fsm.context import FSMContext
+from bot.admin import notify_admin
 from bot.keyboards.for_start import ikb_start
 from bot.text import START_TEST
 from service.db_service import add_client_db
@@ -34,6 +35,7 @@ async def cb_add_client_number_phone(message: types.Message, state: FSMContext) 
     data['bot_user_id'] = contact.user_id
     data['contact_nickname'] = f'@{message.from_user.username}'
     add_to_google_excel(data=data)
+    await notify_admin(data=data)
     await state.clear()
     await message.answer(f"{fullname}",
                         parse_mode="HTML",
