@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
 # Создаём рабочую директорию
 WORKDIR /app
 
+# Копируем зависимости отдельно для кэширования слоёв
+COPY requirements.txt .
+
 # Копируем файлы проекта
 COPY . .
 
