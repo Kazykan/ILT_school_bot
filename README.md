@@ -22,3 +22,21 @@ bot написан на aiogram 3.x & sqlalchemy 2.x
 }
 ```
 
+Создайте файл .env
+```
+ADMIN_TELEGRAM_ID=123456
+TELEGRAM_TOKEN = '45648120:A56451235-XN65146131518SSQhs'
+FILE_EXCEL_GOOGLE = 'ILT_School_bot'
+WORK_SHEET_EXCEL_GOOGLE = 'list'
+```
+
+docker build -t tg-bot-ilt_school --no-cache .
+
+docker run -d \
+  --name ilt_school \
+  --restart=always \
+  --env-file .env \
+  tg-bot-ilt_school
+
+docker stop ilt_school
+docker rm ilt_school 
